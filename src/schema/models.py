@@ -77,8 +77,8 @@ class GroqModelName(StrEnum):
 class AWSModelName(StrEnum):
     """https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html"""
 
-    BEDROCK_HAIKU = "bedrock-3.5-haiku"
-    BEDROCK_SONNET = "bedrock-3.5-sonnet"
+    BEDROCK_HAIKU = "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    BEDROCK_SONNET = "us.anthropic.claude-3-5-sonnet-20240620-v1:0"
 
 
 class OllamaModelName(StrEnum):

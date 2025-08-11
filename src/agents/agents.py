@@ -11,6 +11,7 @@ from agents.knowledge_base_agent import kb_agent
 from agents.langgraph_supervisor_agent import langgraph_supervisor_agent
 from agents.rag_assistant import rag_assistant
 from agents.research_assistant import research_assistant
+from agents.transcriptomics_agent import transcriptomics_agent
 from schema import AgentInfo
 
 DEFAULT_AGENT = "research-assistant"
@@ -31,6 +32,9 @@ agents: dict[str, Agent] = {
     "chatbot": Agent(description="A simple chatbot.", graph=chatbot),
     "research-assistant": Agent(
         description="A research assistant with web search and calculator.", graph=research_assistant
+    ),
+    "transcriptomics-expert": Agent(
+        description="A transcriptomics expert with tools do download files, do analysis and return them", graph=transcriptomics_agent
     ),
     "rag-assistant": Agent(
         description="A RAG assistant with access to information in a database.", graph=rag_assistant

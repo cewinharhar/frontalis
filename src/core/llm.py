@@ -1,14 +1,17 @@
 from functools import cache
 from typing import TypeAlias
+import os 
 
 from langchain_anthropic import ChatAnthropic
-from langchain_aws import ChatBedrock
+from langchain_aws import ChatBedrock, ChatBedrockConverse
 from langchain_community.chat_models import FakeListChatModel
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_google_vertexai import ChatVertexAI
 from langchain_groq import ChatGroq
 from langchain_ollama import ChatOllama
 from langchain_openai import AzureChatOpenAI, ChatOpenAI
+
+
 
 from core.settings import settings
 from schema.models import (
@@ -117,7 +120,7 @@ def get_model(model_name: AllModelEnum, /) -> ModelT:
             return ChatGroq(model=api_model_name, temperature=0.0)
         return ChatGroq(model=api_model_name, temperature=0.5)
     if model_name in AWSModelName:
-        return ChatBedrock(model_id=api_model_name, temperature=0.5)
+        return ChatBedrock(model_id=api_model_name, temperature=0.5, aws_access_key_id=os.getenv('AWS_BEDROCK_ACCESS_KEY'), aws_secret_access_key=os.getenv('AWS_BEDROCK_SECRET_ACCESS_KEY'))
     if model_name in OllamaModelName:
         if settings.OLLAMA_BASE_URL:
             chat_ollama = ChatOllama(

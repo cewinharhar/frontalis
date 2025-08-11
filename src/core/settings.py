@@ -175,7 +175,7 @@ class Settings(BaseSettings):
                     self.AVAILABLE_MODELS.update(set(GroqModelName))
                 case Provider.AWS:
                     if self.DEFAULT_MODEL is None:
-                        self.DEFAULT_MODEL = AWSModelName.BEDROCK_HAIKU
+                        self.DEFAULT_MODEL = AWSModelName.BEDROCK_SONNET
                     self.AVAILABLE_MODELS.update(set(AWSModelName))
                 case Provider.OLLAMA:
                     if self.DEFAULT_MODEL is None:
